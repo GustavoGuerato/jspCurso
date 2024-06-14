@@ -14,16 +14,7 @@
 		<input type="text" id="nome" name="nome">
 		<input type="submit" value="Enviar"> 	
 	</form>
-	
-		<%! int cont = 2;
-			public int retorna(int n){
-				return n*3;
-			}
-		%>
-		<%= cont %>	
-		<br>
-		<%= retorna(24) %>
-		
-		<%application.getInitParameter("estado"); %>
+	<%session.setAttribute("curso", "curso de jsp"); %>
+
 </body>
 </html>

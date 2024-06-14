@@ -7,11 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%=
-	request.getParameter("nome")
-	%>
-	<br>
-	<%response.sendRedirect("https://www.youtube.com/watch?v=yqZ8rZ2lrXA&t=31s"); %>
+	<% out.print(request.getParameter("nome")); %>
+	
+	<%=session.getAttribute("curso")%>
 	
 </body>
 </html>
