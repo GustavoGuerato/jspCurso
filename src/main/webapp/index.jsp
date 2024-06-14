@@ -23,5 +23,7 @@
 		<%= cont %>	
 		<br>
 		<%= retorna(24) %>
+		
+		<%application.getInitParameter("estado"); %>
 </body>
 </html>

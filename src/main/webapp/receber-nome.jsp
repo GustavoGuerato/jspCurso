@@ -10,10 +10,8 @@
 	<%=
 	request.getParameter("nome")
 	%>
-	
-	<%! int cont = 2;%>
-	
-	<%= cont %>
+	<br>
+	<%response.sendRedirect("https://www.youtube.com/watch?v=yqZ8rZ2lrXA&t=31s"); %>
 	
 </body>
 </html>
