@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% out.print(request.getParameter("nome")); %>
+	<%=
+	request.getParameter("nome")
+	%>
+	
+	<%! int cont = 2;%>
+	
+	<%= cont %>
+	
 </body>
 </html>

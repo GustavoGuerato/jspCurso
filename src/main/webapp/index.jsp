@@ -8,12 +8,20 @@
 </head>
 <body>
 	<h2>Bem vindo ao curso de jsp</h2>
-	<% out.print("seu sucesso está garantido"); %>
+	<%="seu sucesso garantido"%>
 	
 	<form action="receber-nome.jsp">
 		<input type="text" id="nome" name="nome">
-		<input type="submit" value="Enviar">
-		
+		<input type="submit" value="Enviar"> 	
 	</form>
+	
+		<%! int cont = 2;
+			public int retorna(int n){
+				return n*3;
+			}
+		%>
+		<%= cont %>	
+		<br>
+		<%= retorna(24) %>
 </body>
 </html>
