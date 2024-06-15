@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="myprefix" uri="WEB-INF/testetag.tld"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ page import="java.util.Date" %>
-	
-	<%="data de hoje é: " + new Date() %>
+    <%@ include file="pagina-include.jsp" %>
+    <myprefix:minhatag/>
 </body>
 </html>

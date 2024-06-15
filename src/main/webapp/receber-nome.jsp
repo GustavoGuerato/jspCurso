@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% out.print(request.getParameter("nome")); %>
+	<%@ page isErrorPage="true"
+	%>
 	
-	<%=session.getAttribute("curso")%>
+	<%=exception %>
 	
 </body>
 </html>
