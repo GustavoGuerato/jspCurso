@@ -16,17 +16,16 @@
 </head>
 <body>
 	<h1>index</h1>
-	<jsp:setProperty property="*" name="calcula" />
 	<br>
 	<form action="cabecalho.jsp" method="post">
-		<input type="text" id="nome" name="nome" >
-		<br>
-		<input type="text" id="ano" name="ano" > 
-		<br>
-		<input type="text" id="sexo" name="sexo" > 
-		<br>
-		<input type="submit" value="testar">
+		
+		<input type="text" id="nome" name="nome"> <br> <input
+			type="text" id="ano" name="ano"><input
+			type="submit" value="testar">
 	</form>
+	<br>
+	<% session.setAttribute("user", "javaavancado"); %>
+	<a href="cabecalho.jsp">Ver Teste</a>
 
 </body>
 </html>

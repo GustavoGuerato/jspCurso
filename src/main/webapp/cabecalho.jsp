@@ -11,10 +11,10 @@
 <body>
 	<jsp:setProperty property="*" name="calcula" />
 	<h3>cabeçalho</h3>
-	<jsp:setProperty property="nome" name="calcula" />
-	<br>
-	<jsp:setProperty property="ano" name="calcula" />
-	<br>
-	<jsp:setProperty property="sexo" name="calcula" />
+		Nome : ${param.nome}
+		<br>
+		idade : ${param.ano}
+		<br>
+		${sessionScope.user}
 </body>
 </html>
