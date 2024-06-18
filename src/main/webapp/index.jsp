@@ -7,7 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <%@ include file="pagina-include.jsp" %>
-    <myprefix:minhatag/>
+<h1>index</h1>
+   <jsp:include page="cabecalho.jsp"/>
+   <h1>conteudo da pagina</h1>
+   
+   <jsp:include page="rodape.jsp"/>
+   
 </body>
 </html>
