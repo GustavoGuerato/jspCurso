@@ -1,3 +1,5 @@
+<jsp:useBean id="calcula" class="beans.BeansCursoJsp"
+	type="beans.BeansCursoJsp" scope="page" />
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>este é o rodape</h2>
+	<jsp:setProperty property="*" name="calcula" />
+	<h3>seja bem vindo!</h3>
 </body>
 </html>
