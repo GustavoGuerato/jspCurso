@@ -15,6 +15,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="LoginServlet"></form>
+	<form action="LoginServlet" method="get">
+		Login: 
+		<input type="text" id="login" name="login"> 
+		<br>
+		Senha: 
+		<input type="text" id="senha" name="senha"> 
+		<br> 
+		<input type="submit" value="logar">
+
+	</form>
 </body>
 </html>
