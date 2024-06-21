@@ -12,6 +12,7 @@
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
 	</properties>
 
 	<dependencies>
@@ -22,7 +23,7 @@
 			<version>5.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- Jakarta JSP API -->
 		<dependency>
 			<groupId>jakarta.servlet.jsp</groupId>
@@ -47,6 +48,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<!-- Plugin do compilador do Maven -->
 			<plugin>
@@ -56,6 +58,16 @@
 				<configuration>
 					<source>11</source>
 					<target>11</target>
+				</configuration>
+			</plugin>
+
+			<!-- Plugin para empacotar como WAR -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
