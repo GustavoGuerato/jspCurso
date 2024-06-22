@@ -1,3 +1,5 @@
-tag\TagCurso.class
 beans\BeansCursoJsp.class
+connection\conexaounica.class
+tag\TagCurso.class
+filter\MyFilter.class
 servlet\LoginServlet.class

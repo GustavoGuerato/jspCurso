@@ -4,11 +4,11 @@ public class BeansCursoJsp {
 
 	private String login;
 	private String senha;
-	
+
 	public boolean validarLoginSenha(String login, String senha) {
-		if(login.equals("admin") && senha.equalsIgnoreCase("admin")) {
+		if (login.equals("admin") && senha.equalsIgnoreCase("admin")) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}

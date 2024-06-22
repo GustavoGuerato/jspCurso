@@ -43,18 +43,17 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
-		
-		
+
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
-		
+
 		if (beansCursoJsp.validarLoginSenha(login, senha)) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("acessoLiberado.jsp");
 			dispatcher.forward(request, response);
-		}else {
+		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("acessonegado.jsp");
 			dispatcher.forward(request, response);
-		}	
+		}
 
 	}
 
