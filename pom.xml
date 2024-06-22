@@ -50,16 +50,15 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.3.1</version> <!-- Versão mais recente do driver PostgreSQL -->
+			<version>42.3.1</version> <!-- Versão mais recente do driver
+			PostgreSQL -->
 		</dependency>
-
-		<!-- Jakarta EE API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version> <!-- ou a versão mais recente disponível -->
-			<scope>provided</scope>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
