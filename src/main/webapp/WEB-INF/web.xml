@@ -33,5 +33,10 @@
 			<taglib-location>/WEB-INF/lib/jstl-impl-1.2.jar</taglib-location>
 		</taglib>
 	</jsp-config>
+	
+	<filter>
+		<filter-name>conexao</filter-name>
+		<filter-class>connection.SingleConnection</filter-class>
+	</filter>
 </web-app>
   
