@@ -40,10 +40,10 @@ public class DaoUsuario {
 	public List<BeansCursoJsp> listar() throws SQLException {
 		List<BeansCursoJsp> listar = new ArrayList<BeansCursoJsp>();
 		String sql = "select * from usuario";
-		
+
 		PreparedStatement statement = connection.prepareStatement(sql);
 		ResultSet resultSet = statement.executeQuery();
-		while(resultSet.next()) {
+		while (resultSet.next()) {
 			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
 			try {
 				beansCursoJsp.setLogin(resultSet.getString("login"));
@@ -54,5 +54,22 @@ public class DaoUsuario {
 			}
 		}
 		return listar;
+	}
+
+	public void delete(String login) {
+		try {
+			String sql = "delete from usuario where login = '" + "login" + "'";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.execute();
+			connection.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 }
