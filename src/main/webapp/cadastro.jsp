@@ -9,7 +9,7 @@
 <body>
 	<h1>Cadastro</h1>
 
-	<form action="">
+	<form action="salvarUsuario" method="post">
 		<table>
 			<tr>
 				<td>Login:</td>
@@ -17,9 +17,10 @@
 			</tr>
 			<tr>
 				<td>senha:</td>
-				<td><input type="password" id="Login" name="login"></td>
+				<td><input type="password" id="senha" name="senha"></td>
 			</tr>
 		</table>
+		<input type="submit" value="Salvar">
 	</form>
 </body>
 </html>

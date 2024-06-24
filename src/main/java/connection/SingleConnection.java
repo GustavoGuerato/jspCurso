@@ -32,6 +32,7 @@ public class SingleConnection {
 			}
 
 		}catch(Exception e){
+			e.printStackTrace();
 			throw new RuntimeException("Erro ao conectar com o banco de dados");
 
 		}
