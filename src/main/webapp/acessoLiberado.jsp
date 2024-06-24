@@ -11,5 +11,8 @@
 <body>
 	<jsp:setProperty property="*" name="calcula" />
 	<h3>seja bem vindo!</h3>
+
+	<a href="cadastro.jsp">Cadastro</a>
+	
 </body>
 </html>
