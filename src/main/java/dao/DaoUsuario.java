@@ -45,29 +45,26 @@ public class DaoUsuario {
 		ResultSet resultSet = statement.executeQuery();
 		while (resultSet.next()) {
 			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
-			try {
-				beansCursoJsp.setLogin(resultSet.getString("login"));
-				beansCursoJsp.setSenha(resultSet.getString("senha"));
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			beansCursoJsp.setLogin(resultSet.getString("login"));
+			beansCursoJsp.setSenha(resultSet.getString("senha"));
+			listar.add(beansCursoJsp);
+
 		}
 		return listar;
 	}
 
 	public void delete(String login) {
 		try {
-			String sql = "delete from usuario where login = '" + "login" + "'";
+			String sql = "delete from usuario where login = ?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.execute();
+			preparedStatement.setString(1, login);
+			preparedStatement.executeUpdate();
 			connection.commit();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			try {
 				connection.rollback();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
