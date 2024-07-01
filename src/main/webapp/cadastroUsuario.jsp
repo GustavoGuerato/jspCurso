@@ -15,8 +15,7 @@
 		<table>
 			<tr>
 				<td>Codigo:</td>
-				<td><input type="text" id="id" name="id"
-					value="${user.id}"></td>
+				<td><input type="text" id="id" name="id" value="${user.id}"></td>
 			</tr>
 			<tr>
 				<td>Login:</td>
@@ -33,7 +32,9 @@
 		<table>
 			<c:forEach items="${usuarios}" var="user">
 				<tr>
-					<td style="width: 150px"><c:out value="${user.login}"></c:out></td>
+
+					<td style="width: 150px"><c:out value="${user.id}"></c:out> <c:out
+							value="${user.login}"></c:out></td>
 					<td><c:out value="${user.senha}"></c:out></td>
 					<td><a href="salvarUsuario?acao=delete&user=${user.login}">Excluir
 					</a></td>
