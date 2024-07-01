@@ -36,20 +36,15 @@ public class UsuarioServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 				view.forward(request, response);
-			}else if(acao.equalsIgnoreCase("edit")){
+			} else if (acao.equalsIgnoreCase("edit")) {
 				BeansCursoJsp beansCursoJsp = daoUsuario.consultar(user);
 				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-				try {
-					request.setAttribute("usuarios", daoUsuario.listar());
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				request.setAttribute("usuarios", beansCursoJsp);
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
