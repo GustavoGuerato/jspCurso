@@ -49,10 +49,14 @@ public class UsuarioServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String id = request.getParameter("id");
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 
 		BeansCursoJsp usuario = new BeansCursoJsp();
+		usuario.setId(Long.parseLong(id));
+		usuario.setLogin(login);
+		usuario.setSenha(senha);
 
 		daoUsuario.salvar(usuario);
 
