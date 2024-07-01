@@ -13,30 +13,35 @@ import beans.BeansCursoJsp;
 import dao.DaoUsuario;
 
 @WebServlet("/salvarUsuario")
-public class Usuario extends HttpServlet {
+public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private DaoUsuario daoUsuario = new DaoUsuario();
 
-	public Usuario() {
+	public UsuarioServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String acao = request.getParameter("acao");
+		String user = request.getParameter("user");
 		try {
-			String acao = request.getParameter("acao");
-			String user = request.getParameter("user");
-			if (acao.equalsIgnoreCase("dele")) {
+			if (acao.equalsIgnoreCase("delete")) {
 				daoUsuario.delete(user);
-				RequestDispatcher view = request.getRequestDispatcher("/cadastro.jsp");
-				request.setAttribute("usuarios", daoUsuario.listar());
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				try {
+					request.setAttribute("usuarios", daoUsuario.listar());
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				view.forward(request, response);
 			}
-		} catch (Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
 		}
-
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -49,7 +54,7 @@ public class Usuario extends HttpServlet {
 		daoUsuario.salvar(usuario);
 
 		try {
-			RequestDispatcher view = request.getRequestDispatcher("/cadastro.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 			request.setAttribute("usuarios", daoUsuario.listar());
 			view.forward(request, response);
 		} catch (SQLException e) {
