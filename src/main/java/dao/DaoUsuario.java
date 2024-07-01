@@ -1,5 +1,6 @@
 package dao;
 
+import java.beans.Beans;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import beans.BeansCursoJsp;
 import connection.SingleConnection;
+import jakarta.servlet.jsp.jstl.sql.Result;
 
 public class DaoUsuario {
 
@@ -68,5 +70,22 @@ public class DaoUsuario {
 				e1.printStackTrace();
 			}
 		}
+	}
+
+	
+
+	public BeansCursoJsp consultar(String login) throws SQLException {
+		String sql = "select * from usuario where login = '" + login + "'";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet = preparedStatement.executeQuery();
+		
+		if (resultSet.next()) {
+			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
+			beansCursoJsp.setLogin(resultSet.getString("login"));
+			beansCursoJsp.setSenha(resultSet.getString("senha"));
+			
+			return beansCursoJsp;
+		}
+		return null;
 	}
 }
