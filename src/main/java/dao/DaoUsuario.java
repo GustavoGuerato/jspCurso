@@ -72,20 +72,37 @@ public class DaoUsuario {
 		}
 	}
 
-	
-
 	public BeansCursoJsp consultar(String login) throws SQLException {
 		String sql = "select * from usuario where login = '" + login + "'";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		ResultSet resultSet = preparedStatement.executeQuery();
-		
+
 		if (resultSet.next()) {
 			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
-			
+
 			return beansCursoJsp;
 		}
 		return null;
+	}
+
+	public void atualizar(BeansCursoJsp usuario) {
+		try {
+			String sql = "update usuario set login = ?,senha=? where id= " + usuario.getId();
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, usuario.getLogin());
+			preparedStatement.setString(2, usuario.getSenha());
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+
 	}
 }
