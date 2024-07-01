@@ -54,11 +54,15 @@ public class UsuarioServlet extends HttpServlet {
 		String senha = request.getParameter("senha");
 
 		BeansCursoJsp usuario = new BeansCursoJsp();
-		usuario.setId(Long.parseLong(id));
+		usuario.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 
-		daoUsuario.salvar(usuario);
+		if (id == null || id.isEmpty()) {
+			daoUsuario.salvar(usuario);
+		} else {
+			daoUsuario.atualizar(usuario);
+		}
 
 		try {
 			RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");

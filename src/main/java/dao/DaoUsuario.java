@@ -47,6 +47,7 @@ public class DaoUsuario {
 		ResultSet resultSet = statement.executeQuery();
 		while (resultSet.next()) {
 			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
+			beansCursoJsp.setId(resultSet.getLong("id"));
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
 			listar.add(beansCursoJsp);
@@ -79,6 +80,7 @@ public class DaoUsuario {
 
 		if (resultSet.next()) {
 			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
+			beansCursoJsp.setId(resultSet.getLong("id"));
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
 
