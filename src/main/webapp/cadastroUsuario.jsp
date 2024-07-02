@@ -59,9 +59,11 @@
 										<c:out value="${user.login}"></c:out></td>
 									<td><c:out value="${user.senha}"></c:out></td>
 									<td><a href="salvarUsuario?acao=delete&user=${user.login}"><img
-											src="resources/img/excluir.png"></a></td>
+											src="resources/img/excluir.png" width="20px" height="20px"
+											alt="excluir" title="Excluir"></a></td>
 									<td><a href="salvarUsuario?acao=edit&user=${user.login}"><img
-											src="resources/img/editar.png"></a></td>
+											src="resources/img/editar.png" width="20px" height="20px"
+											alt="editar" title="editar"> </a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
