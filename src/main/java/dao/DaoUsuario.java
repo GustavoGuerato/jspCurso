@@ -22,10 +22,11 @@ public class DaoUsuario {
 
 	public void salvar(BeansCursoJsp usuario) {
 		try {
-			String sql = "insert into usuario(login, senha) values (?,?)";
+			String sql = "insert into usuario(login, senha,nome) values (?,?,?)";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, usuario.getLogin());
 			insert.setString(2, usuario.getSenha());
+			insert.setString(3, usuario.getNome());
 			insert.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -83,6 +84,7 @@ public class DaoUsuario {
 			beansCursoJsp.setId(resultSet.getLong("id"));
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
+			beansCursoJsp.setNome(resultSet.getString("nome"));
 
 			return beansCursoJsp;
 		}

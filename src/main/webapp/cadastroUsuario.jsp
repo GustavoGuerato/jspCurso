@@ -65,6 +65,10 @@
 											src="resources/img/editar.png" width="20px" height="20px"
 											alt="editar" title="editar"> </a></td>
 								</tr>
+								<tr>
+									<td style="width: 150px"><input type="text" id="nome"
+										name="nome" value="${user.nome}"></td>
+								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
