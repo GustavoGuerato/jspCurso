@@ -61,7 +61,7 @@ public class DaoUsuario {
 		try {
 			String sql = "delete from usuario where id = '" + id + "'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, login);
+			preparedStatement.setString(1, id);
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
