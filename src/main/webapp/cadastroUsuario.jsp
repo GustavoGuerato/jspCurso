@@ -8,6 +8,7 @@
 		<div class="lb-header">
 			<h2>Cadastro De Usuario</h2>
 		</div>
+		<h3 style="color: red">${msg}</h3>
 		<form action="salvarUsuario" method="post" class="email-login"
 			id="form-user">
 			<div class="u-form-group">

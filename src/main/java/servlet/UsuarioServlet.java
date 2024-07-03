@@ -79,6 +79,10 @@ public class UsuarioServlet extends HttpServlet {
 			usuario.setNome(nome);
 
 			try {
+				if(id ==null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
+					request.setAttribute("msg", "usuario já existe com o este login");
+					
+				}
 				if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) {
 					daoUsuario.salvar(usuario);
 				} else if (id != null && id.isEmpty()) {
