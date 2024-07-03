@@ -51,6 +51,8 @@ public class DaoUsuario {
 			beansCursoJsp.setId(resultSet.getLong("id"));
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
+			beansCursoJsp.setNome(resultSet.getString("nome"));
+			beansCursoJsp.setTel(resultSet.getString("telefone"));
 			listar.add(beansCursoJsp);
 
 		}
@@ -85,7 +87,7 @@ public class DaoUsuario {
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
 			beansCursoJsp.setNome(resultSet.getString("nome"));
-
+			beansCursoJsp.setTel(resultSet.getString("telefone"));
 			return beansCursoJsp;
 		}
 		return null;

@@ -24,8 +24,12 @@
 					name="senha" class="input-field" value="${user.senha}">
 			</div>
 			<div>
-				<label for="senha">Senha:</label> <input type="password" id="senha"
+				<label for="senha">nome:</label> <input type="password" id="senha"
 					name="senha" class="input-field" value="${user.nome}">
+			</div>
+			<div>
+				<label for="senha">telefone:</label> <input type="password" id="senha"
+					name="senha" class="input-field" value="${user.telefone}">
 			</div>
 			<div class="u-form-group">
 				<button type="submit">Salvar</button>
@@ -42,9 +46,10 @@
 								value="${user.login}"></c:out></td>
 						<td><c:out value="${user.senha}"></c:out></td>
 						<td><c:out value="${user.nome}"></c:out></td>
-						<td><a href="salvarUsuario?acao=delete&user=${user.id}">Excluir</a></td>
-						<td><a href="salvarUsuario?acao=edit&user=${user.id}">Editar</a></td>
-
+						<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img
+								src="resources/img/excluir.png"></a></td>
+						<td><a href="salvarUsuario?acao=edit&user=${user.id}"><img
+								src="resources/img/editar.png"></a></td>
 					</tr>
 				</c:forEach>
 			</table>
