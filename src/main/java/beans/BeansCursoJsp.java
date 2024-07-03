@@ -6,6 +6,15 @@ public class BeansCursoJsp {
 	private String login;
 	private String senha;
 	private String nome;
+	private String tel;
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 
 	public String getNome() {
 		return nome;
