@@ -13,7 +13,7 @@
 	<h3>seja bem vindo!</h3>
 
 	
-	<a href="/cadastroUsuario.jsp">Cadastro De Usuarios</a>
+	<a href="salvarUsuario?acao=listartodos">Cadastro De Usuarios</a>
 	
 </body>
 </html>
