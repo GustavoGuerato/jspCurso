@@ -90,6 +90,23 @@ public class DaoUsuario {
 		}
 		return null;
 	}
+	
+	public boolean validarLogin(String login) throws SQLException {
+		String sql = "select count(1) as qtd from usuario where login = '" + login + "'";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		if (resultSet.next()) {
+			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
+			beansCursoJsp.setId(resultSet.getLong("id"));
+			beansCursoJsp.setLogin(resultSet.getString("login"));
+			beansCursoJsp.setSenha(resultSet.getString("senha"));
+			beansCursoJsp.setNome(resultSet.getString("nome"));
+
+			return beansCursoJsp;
+		}
+		return (Boolean) null;
+	}
 
 	public void atualizar(BeansCursoJsp usuario) {
 		try {

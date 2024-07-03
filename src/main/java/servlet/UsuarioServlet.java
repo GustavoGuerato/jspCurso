@@ -78,10 +78,15 @@ public class UsuarioServlet extends HttpServlet {
 			usuario.setSenha(senha);
 			usuario.setNome(nome);
 
-			if (id == null || id.isEmpty()) {
-				daoUsuario.salvar(usuario);
-			} else {
-				daoUsuario.atualizar(usuario);
+			try {
+				if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) {
+					daoUsuario.salvar(usuario);
+				} else if (id != null && id.isEmpty()) {
+					daoUsuario.atualizar(usuario);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 			try {
