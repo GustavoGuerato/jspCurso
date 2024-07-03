@@ -1,16 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<!DOCTYPE html>
-<html>
 <head>
 <meta charset="UTF-8">
 <title>Cadastro De Usuario</title>
 <link rel="stylesheet" type="text/css" href="resources/css/cadastro.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/table.css" />
-
-
 </head>
 <body>
 	<div class="login-box">
@@ -30,50 +21,29 @@
 				<label for="senha">Senha:</label> <input type="password" id="senha"
 					name="senha" class="input-field" value="${user.senha}">
 			</div>
+			<div>
+				<label for="senha">Senha:</label> <input type="password" id="senha"
+					name="senha" class="input-field" value="${user.nome}">
+			</div>
 			<div class="u-form-group">
 				<button type="submit">Salvar</button>
 			</div>
 		</form>
 
 		<div class="email-login">
-			<section>
-				<h1>Lista de Usuários</h1>
-				<div class="tbl-header">
-					<table>
-						<thead>
-							<tr>
-								<th>ID & Login</th>
-								<th>Senha</th>
-								<th>Ação</th>
-								<th>Ação</th>
-							</tr>
-						</thead>
-					</table>
-				</div>
-				<div class="tbl-content">
-					<table>
-						<tbody>
-							<c:forEach items="${usuarios}" var="user">
-								<tr>
-									<td style="width: 150px"><c:out value="${user.id}"></c:out>
-										<c:out value="${user.login}"></c:out></td>
-									<td><c:out value="${user.senha}"></c:out></td>
-									<td><a href="salvarUsuario?acao=delete&user=${user.login}"><img
-											src="resources/img/excluir.png" width="20px" height="20px"
-											alt="excluir" title="Excluir"></a></td>
-									<td><a href="salvarUsuario?acao=edit&user=${user.login}"><img
-											src="resources/img/editar.png" width="20px" height="20px"
-											alt="editar" title="editar"> </a></td>
-								</tr>
-								<tr>
-									<td style="width: 150px"><input type="text" id="nome"
-										name="nome" value="${user.nome}"></td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</section>
+			<table>
+				<c:forEach items="${usuarios}" var="user">
+					<tr>
+						<td style="width: 150px"><c:out value="${user.id}"></c:out> <c:out
+								value="${user.login}"></c:out></td>
+						<td><c:out value="${user.senha}"></c:out></td>
+						<td><c:out value="${user.nome}"></c:out></td>
+						<td><a href="salvarUsuario?acao=delete&user=${user.login}">Excluir</a></td>
+						<td><a href="salvarUsuario?acao=edit&user=${user.login}">Editar</a></td>
+
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
 	</div>
 </body>

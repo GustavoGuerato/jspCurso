@@ -93,17 +93,17 @@ public class DaoUsuario {
 
 	public void atualizar(BeansCursoJsp usuario) {
 		try {
-			String sql = "update usuario set login = ?,senha=? where id= " + usuario.getId();
+			String sql = "update usuario set login = ?,senha=?,nome=? where id= " + usuario.getId();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, usuario.getLogin());
 			preparedStatement.setString(2, usuario.getSenha());
+			preparedStatement.setString(3, usuario.getNome());
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
 				connection.rollback();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
