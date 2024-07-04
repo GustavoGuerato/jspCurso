@@ -79,6 +79,13 @@ public class UsuarioServlet extends HttpServlet {
 			usuario.setNome(nome);
 
 			try {
+				String msg = null;
+				boolean podeInserir = true;
+				if (login == null || login.isEmpty()) {
+					msg = "login deve ser informado";
+					request.setAttribute("msg", msg);
+					return;
+				}
 				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
 					request.setAttribute("msg", "usuario já existe com o este login");
 
