@@ -73,7 +73,7 @@ public class UsuarioServlet extends HttpServlet {
 			String nome = request.getParameter("nome");
 
 			BeansCursoJsp usuario = new BeansCursoJsp();
-			usuario.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
+			usuario.setId(!id.isEmpty() ? Long.parseLong(id) : null);
 			usuario.setLogin(login);
 			usuario.setSenha(senha);
 			usuario.setNome(nome);
@@ -87,6 +87,9 @@ public class UsuarioServlet extends HttpServlet {
 					daoUsuario.salvar(usuario);
 				} else if (id != null && id.isEmpty()) {
 					daoUsuario.atualizar(usuario);
+				}
+				if (!id.isEmpty()) {
+					request.setAttribute("user", usuario);
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
