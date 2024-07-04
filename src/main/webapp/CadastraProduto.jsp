@@ -14,21 +14,20 @@
 	<h1>Adicionar Produto</h1>
 	<form action="adicionarProduto" method="post">
 		<label for="nome">Nome:</label> <input type="text" id="nome"
-			name="nome" required><br>
-		<br> <label for="codigo">Código:</label> <input type="text"
-			id="codigo" name="codigo" required><br>
+			name="nome" required><br> <br> <label for="codigo">Código:</label>
+		<input type="text" id="codigo" name="codigo" required><br>
 		<br> <label for="validade">Validade:</label> <input type="text"
-			id="validade" name="validade" required><br>
-		<br> <label for="quantidade">Quantidade:</label> <input
-			type="text" id="quantidade" name="quantidade" required><br>
-		<br> <label for="preco">Preço:</label> <input type="text"
-			id="preco" name="preco" required><br>
-		<br>
+			id="validade" name="validade" required><br> <br> <label
+			for="quantidade">Quantidade:</label> <input type="text"
+			id="quantidade" name="quantidade" required><br> <br>
+		<label for="preco">Preço:</label> <input type="text" id="preco"
+			name="preco" required><br> <br>
 
 		<button type="submit">Adicionar Produto</button>
 	</form>
 	<form action="home.jsp" method="get">
 		<button type="submit">Voltar</button>
+		<button type="submit" value="confirmar"></button>
 	</form>
 
 	<c:if test="${not empty mensagem}">

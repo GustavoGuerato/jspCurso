@@ -36,4 +36,14 @@
     <servlet-name>UsuarioServlet</servlet-name>
     <url-pattern>/UsuarioServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdicionarProdutoServlet</display-name>
+    <servlet-name>AdicionarProdutoServlet</servlet-name>
+    <servlet-class>servlet.AdicionarProdutoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdicionarProdutoServlet</servlet-name>
+    <url-pattern>/AdicionarProdutoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
