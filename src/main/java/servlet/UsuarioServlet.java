@@ -71,18 +71,32 @@ public class UsuarioServlet extends HttpServlet {
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
 			String nome = request.getParameter("nome");
+			String telefone = request.getParameter("telefone");
 
 			BeansCursoJsp usuario = new BeansCursoJsp();
 			usuario.setId(!id.isEmpty() ? Long.parseLong(id) : null);
 			usuario.setLogin(login);
 			usuario.setSenha(senha);
 			usuario.setNome(nome);
+			usuario.setTel(telefone);
 
 			try {
 				String msg = null;
 				boolean podeInserir = true;
 				if (login == null || login.isEmpty()) {
 					msg = "login deve ser informado";
+					request.setAttribute("msg", msg);
+					return;
+				} else if (senha == null || senha.isEmpty()) {
+					msg = "senha deve ser informada";
+					request.setAttribute("msg", msg);
+					return;
+				} else if (nome == null || nome.isEmpty()) {
+					msg = "nome deve ser informado";
+					request.setAttribute("msg", msg);
+					return;
+				} else if (telefone == null || telefone.isEmpty()) {
+					msg = "telefone deve ser informado";
 					request.setAttribute("msg", msg);
 					return;
 				}
