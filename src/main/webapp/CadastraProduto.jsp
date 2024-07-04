@@ -7,12 +7,53 @@
 <meta charset="UTF-8">
 <title>Adicionar Produto</title>
 <style>
-/* Adicione seus estilos CSS aqui */
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.form-container input[type=text], 
+.form-container input[type=number], 
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
 </style>
 </head>
 <body>
 	<h1>Adicionar Produto</h1>
-	<form action="adicionarProduto" method="post">
+	<form action="adicionarProduto" method="post" class="form-container">
 		<label for="nome">Nome:</label> <input type="text" id="nome"
 			name="nome" required><br> <br> <label for="codigo">Código:</label>
 		<input type="text" id="codigo" name="codigo" required><br>

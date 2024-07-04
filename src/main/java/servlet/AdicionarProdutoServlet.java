@@ -29,7 +29,6 @@ public class AdicionarProdutoServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Aqui você pode redirecionar para a página inicial ou fazer outra operação
         response.sendRedirect(request.getContextPath() + "/home.jsp");
     }
 
@@ -52,6 +51,7 @@ public class AdicionarProdutoServlet extends HttpServlet {
             validadeProduto != null && !validadeProduto.isEmpty() &&
             quantidadeProduto != null && !quantidadeProduto.isEmpty() &&
             precoProduto != null && !precoProduto.isEmpty()) {
+        	
 
             boolean produtoExiste = daoProduto.BuscarProdutoBool(codigoProduto);
 
