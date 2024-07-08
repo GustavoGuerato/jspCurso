@@ -39,6 +39,11 @@
 					id="senha" name="senha" class="input-field"
 					value="${user.telefone}">
 			</div>
+			<div>
+				<label for="senha">CEP:</label> <input type="password" id="senha"
+					name="senha" class="input-field" value="${user.cep} "
+					onblur="perdeu foco">
+			</div>
 			<div class="u-form-group">
 				<button type="submit">Salvar</button>
 				<button type="submit"
@@ -63,5 +68,27 @@
 			</table>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function consultaCep() {
+			val
+			cep = $("#cep").val();
+			$.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?",
+					function(dados) {
+
+						if (!("erro" in dados)) {
+							$("#rua").val(dados.logradouro);
+							$("#bairro").val(dados.bairro);
+							$("#cidade").val(dados.localidade);
+							$("#uf").val(dados.uf);
+							$("#ibge").val(dados.ibge);
+						} //end if.
+						else {
+							limpa_formulário_cep();
+							alert("CEP não encontrado.");
+						}
+					});
+
+		}
+	</script>
 </body>
 </html>

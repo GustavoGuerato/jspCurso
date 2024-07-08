@@ -7,6 +7,15 @@ public class BeansCursoJsp {
 	private String senha;
 	private String nome;
 	private String tel;
+	private String cep;
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 
 	public String getTel() {
 		return tel;
