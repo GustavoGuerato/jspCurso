@@ -80,6 +80,7 @@ body {
 </style>
 </head>
 <body>
+ <a href="acessoliberado.jsp">Inicio</a>
 	<div class="form-container">
 		<h2>Adicionar Produto</h2>
 		<form action="adicionarProduto" method="post">

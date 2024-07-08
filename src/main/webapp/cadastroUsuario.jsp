@@ -4,6 +4,8 @@
 <link rel="stylesheet" type="text/css" href="resources/css/cadastro.css" />
 </head>
 <body>
+	<a href="acessoliberado.jsp">Inicio</a>
+
 	<div class="login-box">
 		<div class="lb-header">
 			<h2>Cadastro De Usuario</h2>
@@ -28,8 +30,9 @@
 					name="senha" class="input-field" value="${user.nome}">
 			</div>
 			<div>
-				<label for="senha">telefone:</label> <input type="password" id="senha"
-					name="senha" class="input-field" value="${user.telefone}">
+				<label for="senha">telefone:</label> <input type="password"
+					id="senha" name="senha" class="input-field"
+					value="${user.telefone}">
 			</div>
 			<div class="u-form-group">
 				<button type="submit">Salvar</button>
