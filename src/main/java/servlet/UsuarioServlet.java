@@ -14,118 +14,120 @@ import dao.DaoUsuario;
 
 @WebServlet("/salvarUsuario")
 public class UsuarioServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private DaoUsuario daoUsuario = new DaoUsuario();
+    private DaoUsuario daoUsuario = new DaoUsuario();
 
-	public UsuarioServlet() {
-		super();
-	}
+    public UsuarioServlet() {
+        super();
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		String acao = request.getParameter("acao");
-		String user = request.getParameter("user");
-		try {
-			if (acao.equalsIgnoreCase("delete")) {
-				daoUsuario.delete(user);
-				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-				try {
-					request.setAttribute("usuarios", daoUsuario.listar());
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				view.forward(request, response);
-			} else if (acao.equalsIgnoreCase("edit")) {
-				BeansCursoJsp beansCursoJsp = daoUsuario.consultar(user);
-				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-				request.setAttribute("usuarios", beansCursoJsp);
-				view.forward(request, response);
+        String acao = request.getParameter("acao");
+        String user = request.getParameter("user");
 
-			} else if (acao.equalsIgnoreCase("listartodos")) {
-				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-				request.setAttribute("usuarios", daoUsuario.listar());
-				view.forward(request, response);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        try {
+            if (acao != null) {
+                switch (acao) {
+                    case "delete":
+                        daoUsuario.delete(user);
+                        listarUsuarios(request, response);
+                        break;
 
-	}
+                    case "edit":
+                        BeansCursoJsp usuario = daoUsuario.consultar(user);
+                        request.setAttribute("usuario", usuario);
+                        RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+                        view.forward(request, response);
+                        break;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String acao = request.getParameter("acao");
-		if (acao != null && acao.equalsIgnoreCase("reset")) {
-			try {
-				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-				request.setAttribute("usuarios", daoUsuario.listar());
-				view.forward(request, response);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			String id = request.getParameter("id");
-			String login = request.getParameter("login");
-			String senha = request.getParameter("senha");
-			String nome = request.getParameter("nome");
-			String telefone = request.getParameter("telefone");
+                    case "listartodos":
+                        listarUsuarios(request, response);
+                        break;
 
-			BeansCursoJsp usuario = new BeansCursoJsp();
-			usuario.setId(!id.isEmpty() ? Long.parseLong(id) : null);
-			usuario.setLogin(login);
-			usuario.setSenha(senha);
-			usuario.setNome(nome);
-			usuario.setTel(telefone);
+                    default:
+                        response.sendRedirect(request.getContextPath() + "/home.jsp");
+                        break;
+                }
+            } else {
+                response.sendRedirect(request.getContextPath() + "/home.jsp");
+            }
+        } catch (SQLException e) {
+            throw new ServletException("Erro ao processar a ação: " + acao, e);
+        }
+    }
 
-			try {
-				String msg = null;
-				boolean podeInserir = true;
-				if (login == null || login.isEmpty()) {
-					msg = "login deve ser informado";
-					request.setAttribute("msg", msg);
-					return;
-				} else if (senha == null || senha.isEmpty()) {
-					msg = "senha deve ser informada";
-					request.setAttribute("msg", msg);
-					return;
-				} else if (nome == null || nome.isEmpty()) {
-					msg = "nome deve ser informado";
-					request.setAttribute("msg", msg);
-					return;
-				} else if (telefone == null || telefone.isEmpty()) {
-					msg = "telefone deve ser informado";
-					request.setAttribute("msg", msg);
-					return;
-				}
-				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
-					request.setAttribute("msg", "usuario já existe com o este login");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-				}
-				if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) {
-					daoUsuario.salvar(usuario);
-				} else if (id != null && id.isEmpty()) {
-					daoUsuario.atualizar(usuario);
-				}
-				if (!id.isEmpty()) {
-					request.setAttribute("user", usuario);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+        String acao = request.getParameter("acao");
 
-			try {
-				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-				request.setAttribute("usuarios", daoUsuario.listar());
-				view.forward(request, response);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+        if ("reset".equalsIgnoreCase(acao)) {
+            try {
+                listarUsuarios(request, response);
+            } catch (SQLException e) {
+                throw new ServletException("Erro ao listar usuários", e);
+            }
+        } else {
+            String id = request.getParameter("id");
+            String login = request.getParameter("login");
+            String senha = request.getParameter("senha");
+            String nome = request.getParameter("nome");
+            String telefone = request.getParameter("telefone");
 
-	}
+            BeansCursoJsp usuario = new BeansCursoJsp();
+            usuario.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : null);
+            usuario.setLogin(login);
+            usuario.setSenha(senha);
+            usuario.setNome(nome);
+            usuario.setTel(telefone);
+
+            try {
+                String msg = validarCampos(login, senha, nome, telefone);
+                if (msg != null) {
+                    request.setAttribute("msg", msg);
+                } else {
+                    if (id == null || id.isEmpty()) {
+                        if (!daoUsuario.validarLogin(login)) {
+                            request.setAttribute("msg", "Usuário já existe com este login");
+                        } else {
+                            daoUsuario.salvar(usuario);
+                            request.setAttribute("msg", "Usuário salvo com sucesso!");
+                        }
+                    } else {
+                        daoUsuario.atualizar(usuario);
+                        request.setAttribute("msg", "Usuário atualizado com sucesso!");
+                    }
+                }
+                listarUsuarios(request, response);
+            } catch (SQLException e) {
+                throw new ServletException("Erro ao salvar ou atualizar usuário", e);
+            }
+        }
+    }
+
+    private void listarUsuarios(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+        request.setAttribute("usuarios", daoUsuario.listar());
+        view.forward(request, response);
+    }
+
+    private String validarCampos(String login, String senha, String nome, String telefone) {
+        if (login == null || login.isEmpty()) {
+            return "Login deve ser informado";
+        }
+        if (senha == null || senha.isEmpty()) {
+            return "Senha deve ser informada";
+        }
+        if (nome == null || nome.isEmpty()) {
+            return "Nome deve ser informado";
+        }
+        if (telefone == null || telefone.isEmpty()) {
+            return "Telefone deve ser informado";
+        }
+        return null;
+    }
 }
