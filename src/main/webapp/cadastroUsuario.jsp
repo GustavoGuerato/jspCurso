@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <title>Cadastro De Usuario</title>
@@ -30,24 +32,39 @@
 				<label for="senha">Senha:</label> <input type="password" id="senha"
 					name="senha" class="input-field" value="${user.senha}">
 			</div>
-			<div>
-				<label for="senha">nome:</label> <input type="password" id="senha"
-					name="senha" class="input-field" value="${user.nome}">
+			<div class="u-form-group">
+				<label for="nome">Nome:</label> <input type="text" id="nome"
+					name="nome" class="input-field" value="${user.nome}">
 			</div>
-			<div>
-				<label for="senha">telefone:</label> <input type="password"
-					id="senha" name="senha" class="input-field"
+			<div class="u-form-group">
+				<label for="telefone">Telefone:</label> <input type="text"
+					id="telefone" name="telefone" class="input-field"
 					value="${user.telefone}">
 			</div>
-			<div>
-				<label for="senha">CEP:</label> <input type="password" id="senha"
-					name="senha" class="input-field" value="${user.cep} "
-					onblur="perdeu foco">
+			<div class="u-form-group">
+				<label for="cep">CEP:</label> <input type="text" id="cep" name="cep"
+					class="input-field" value="${user.cep} " onblur="consultaCep();">
+			</div>
+			<div class="u-form-group">
+				<label for="rua">Rua:</label> <input type="text" id="rua" name="rua"
+					class="input-field" value="${user.rua}">
+			</div>
+			<div class="u-form-group">
+				<label for="bairro">Bairro:</label> <input type="text" id="bairro"
+					name="bairro" class="input-field" value="${user.bairro}">
+			</div>
+			<div class="u-form-group">
+				<label for="cidade">Cidade:</label> <input type="text" id="cidade"
+					name="cidade" class="input-field" value="${user.cidade}">
+			</div>
+			<div class="u-form-group">
+				<label for="estado">Estado:</label> <input type="text" id="estado"
+					name="estado" class="input-field" value="${user.estado}">
 			</div>
 			<div class="u-form-group">
 				<button type="submit">Salvar</button>
-				<button type="submit"
-					onclick="document.getElementById('formUser').action='salvarUsuario?acao=reset'">Cancelar</button>
+				<button type="button"
+					onclick="document.getElementById('form-user').action='salvarUsuario?acao=reset'; document.getElementById('form-user').submit();">Cancelar</button>
 			</div>
 		</form>
 
@@ -70,8 +87,7 @@
 	</div>
 	<script type="text/javascript">
 		function consultaCep() {
-			val
-			cep = $("#cep").val();
+			var cep = $("#cep").val();
 			$.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?",
 					function(dados) {
 
@@ -79,15 +95,19 @@
 							$("#rua").val(dados.logradouro);
 							$("#bairro").val(dados.bairro);
 							$("#cidade").val(dados.localidade);
-							$("#uf").val(dados.uf);
-							$("#ibge").val(dados.ibge);
-						} //end if.
-						else {
+							$("#estado").val(dados.uf);
+						} else {
 							limpa_formulário_cep();
 							alert("CEP não encontrado.");
 						}
 					});
+		}
 
+		function limpa_formulário_cep() {
+			$("#rua").val("");
+			$("#bairro").val("");
+			$("#cidade").val("");
+			$("#estado").val("");
 		}
 	</script>
 </body>
