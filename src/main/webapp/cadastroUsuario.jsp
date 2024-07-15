@@ -9,6 +9,27 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
 	crossorigin="anonymous"></script>
+
+<style>
+.form-group-row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.form-group-row .u-form-group {
+	flex: 1;
+	margin-right: 10px;
+}
+
+.form-group-row .u-form-group:last-child {
+	margin-right: 0;
+}
+
+.input-field {
+	width: 100%;
+}
+</style>
+
 </head>
 <body>
 	<a href="acessoliberado.jsp">Inicio</a>
@@ -20,9 +41,16 @@
 		<h3 style="color: red">${msg}</h3>
 		<form action="salvarUsuario" method="post" class="email-login"
 			id="form-user">
-			<div class="u-form-group">
-				<label for="id">Codigo:</label> <input type="text" id="id" name="id"
-					class="input-field" value="${user.id}">
+			<div class="form-group-row">
+				<div class="u-form-group">
+					<label for="id">Código:</label> <input type="text" id="id"
+						name="id" class="input-field" value="${user.id}">
+				</div>
+				<div class="u-form-group">
+					<label for="cep">CEP:</label> <input type="text" id="cep"
+						name="cep" class="input-field" value="${user.cep}"
+						onblur="consultaCep();">
+				</div>
 			</div>
 			<div class="u-form-group">
 				<label for="login">Login:</label> <input type="text" id="login"
@@ -42,10 +70,6 @@
 					value="${user.telefone}">
 			</div>
 			<div class="u-form-group">
-				<label for="cep">CEP:</label> <input type="text" id="cep" name="cep"
-					class="input-field" value="${user.cep} " onblur="consultaCep();">
-			</div>
-			<div class="u-form-group">
 				<label for="rua">Rua:</label> <input type="text" id="rua" name="rua"
 					class="input-field" value="${user.rua}">
 			</div>
@@ -62,7 +86,7 @@
 					name="estado" class="input-field" value="${user.estado}">
 			</div>
 			<div class="u-form-group">
-				<label for="ibge">Ibge:</label> <input type="text" id="ibge"
+				<label for="ibge">IBGE:</label> <input type="text" id="ibge"
 					name="ibge" class="input-field" value="${user.ibge}">
 			</div>
 			<div class="u-form-group">
