@@ -99,7 +99,7 @@
 							$("#rua").val(dados.logradouro);
 							$("#bairro").val(dados.bairro);
 							$("#cidade").val(dados.localidade);
-							$("#uf").val(dados.uf);
+							$("#estado").val(dados.uf);
 							$("#ibge").val(dados.ibge);
 
 						} else {
