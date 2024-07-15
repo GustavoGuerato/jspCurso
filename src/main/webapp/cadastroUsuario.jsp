@@ -62,6 +62,10 @@
 					name="estado" class="input-field" value="${user.estado}">
 			</div>
 			<div class="u-form-group">
+				<label for="ibge">Ibge:</label> <input type="text" id="ibge"
+					name="ibge" class="input-field" value="${user.ibge}">
+			</div>
+			<div class="u-form-group">
 				<button type="submit">Salvar</button>
 				<button type="button"
 					onclick="document.getElementById('form-user').action='salvarUsuario?acao=reset'; document.getElementById('form-user').submit();">Cancelar</button>
@@ -95,7 +99,9 @@
 							$("#rua").val(dados.logradouro);
 							$("#bairro").val(dados.bairro);
 							$("#cidade").val(dados.localidade);
-							$("#estado").val(dados.uf);
+							$("#uf").val(dados.uf);
+							$("#ibge").val(dados.ibge);
+
 						} else {
 							limpa_formulário_cep();
 							alert("CEP não encontrado.");
