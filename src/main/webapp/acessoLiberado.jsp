@@ -17,6 +17,7 @@
 		style="height: 20px, width:20px" alt="Cadastro de usuarios"
 		src="resources/img/cadastro.png" />
 	</a>
+	<a href="salvarUsuario"></a>
 
 </body>
 </html>

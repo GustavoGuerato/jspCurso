@@ -124,6 +124,7 @@ public class UsuarioServlet extends HttpServlet {
 			throws ServletException, IOException, SQLException {
 		RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 		request.setAttribute("usuarios", daoUsuario.listar());
+		request.setAttribute("msg", "salvo com sucesso");
 		view.forward(request, response);
 	}
 
