@@ -44,8 +44,8 @@
 			id="form-user">
 			<div class="form-group-row">
 				<div class="u-form-group">
-					<label for="id">Código:</label> <input type="text" id="id"
-						name="id" class="input-field" value="${user.id}">
+					<label for="id">User:</label> <input type="text" id="id" name="id"
+						class="input-field" value="${userEscolhido}">
 
 					<div class="u-form-group">
 						<button type="submit">Salvar</button>

@@ -7,10 +7,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+
+import beans.BeansCursoJsp;
+import dao.DaoUsuario;
 
 @WebServlet("/salvarTelefones")
 public class TelefoneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	private DaoUsuario daoUsuario = new DaoUsuario();
 
 	public TelefoneServlet() {
 		super();
@@ -19,13 +25,22 @@ public class TelefoneServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String user = request.getParameter("user");
-		request.getSession().setAttribute("user", user);
-		
-		RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
-		//request.setAttribute("usuarios", daoUsuario.listar());
-		//request.setAttribute("msg", "salvo com sucesso");
-		view.forward(request, response);
+		try {
+			String user = request.getParameter("user");
+
+			BeansCursoJsp usuario = daoUsuario.consultar(user);
+
+			RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
+			// request.setAttribute("usuarios", daoUsuario.listar());
+			request.setAttribute("msg", "salvo com sucesso");
+			request.setAttribute("userEscolhido", user);
+			request.getSession().setAttribute("user", usuario.getId());
+			request.getSession().setAttribute("nomeUser", usuario.getId());
+			view.forward(request, response);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
