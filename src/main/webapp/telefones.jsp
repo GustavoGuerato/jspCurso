@@ -56,19 +56,14 @@
 
 		<div class="email-login">
 			<table>
-				<c:forEach items="${usuarios}" var="user">
+				<c:forEach items="${telefones}" var="fone">
 					<tr>
-						<td style="width: 150px"><c:out value="${user.id}"></c:out> <c:out
-								value="${user.login}"></c:out></td>
-						<td><c:out value="${user.senha}"></c:out></td>
-						<td><c:out value="${user.nome}"></c:out></td>
+						<td style="width: 150px"><c:out value="${fone.id}"></c:out> <c:out
+								value="${fone.numero}"></c:out></td>
+						<td><c:out value="${fone.tipo}"></c:out></td>
 						<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img
 								src="resources/img/excluir.png" width="20px" height="20px"></a></td>
-						<td><a href="salvarUsuario?acao=edit&user=${user.id}"><img
-								src="resources/img/editar.png" width="20px" height="20px"></a></td>
-						<td><a href="SalvarTelefone?user=${user.id}"><img
-								alt="Telefones" title="telefones" src="resources/img/telefone."
-								width="20px" height="20px"></a></td>
+
 					</tr>
 				</c:forEach>
 			</table>
