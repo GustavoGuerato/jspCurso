@@ -108,9 +108,9 @@
 								src="resources/img/excluir.png" width="20px" height="20px"></a></td>
 						<td><a href="salvarUsuario?acao=edit&user=${user.id}"><img
 								src="resources/img/editar.png" width="20px" height="20px"></a></td>
-						<td><a href="salvarUsuario?acao=editar&user=${user.id}"><img
-								alt="Telefones" title="telefones" src="" width="20px"
-								height="20px"></a></td>
+						<td><a href="SalvarTelefone?user=${user.id}"><img
+								alt="Telefones" title="telefones" src="resources/img/telefone."
+								width="20px" height="20px"></a></td>
 					</tr>
 				</c:forEach>
 			</table>

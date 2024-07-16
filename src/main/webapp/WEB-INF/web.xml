@@ -46,4 +46,14 @@
     <servlet-name>AdicionarProdutoServlet</servlet-name>
     <url-pattern>/AdicionarProdutoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TelefoneServlet</display-name>
+    <servlet-name>TelefoneServlet</servlet-name>
+    <servlet-class>servlet.TelefoneServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TelefoneServlet</servlet-name>
+    <url-pattern>/TelefoneServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
