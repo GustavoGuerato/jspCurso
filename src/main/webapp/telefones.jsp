@@ -46,7 +46,7 @@
 				<div class="u-form-group">
 					<label for="id">User:</label> <input type="text"
 						readonly="readonly" id="id" name="id" class="input-field"
-						value="${userEscolhido}">
+						value="${userid}">
 
 					<div class="u-form-group">
 						<button type="submit">Salvar</button>
@@ -59,8 +59,7 @@
 			<table>
 				<c:forEach items="${telefones}" var="fone">
 					<tr>
-						<td style="width: 150px"><c:out
-								value="${userEscolhido.id.tostring}"></c:out> <c:out
+						<td style="width: 150px"><c:out value="${fone.id}"></c:out> <c:out
 								value="${fone.numero}"></c:out></td>
 						<td><c:out value="${fone.tipo}"></c:out></td>
 						<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img

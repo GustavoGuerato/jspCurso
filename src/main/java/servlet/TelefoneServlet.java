@@ -30,10 +30,13 @@ public class TelefoneServlet extends HttpServlet {
 
 			BeansCursoJsp usuario = daoUsuario.consultar(user);
 
+			request.getSession().setAttribute("userEscolhido", usuario);
+			request.setAttribute("userEscolhido", usuario.getId());
+			request.setAttribute("userEscolhidoNome", usuario.getNome());
+
 			RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
 			// request.setAttribute("usuarios", daoUsuario.listar());
 			request.setAttribute("msg", "salvo com sucesso");
-			request.setAttribute("userEscolhido", user);
 			request.getSession().setAttribute("user", usuario.getId());
 			request.getSession().setAttribute("nomeUser", usuario.getId());
 			view.forward(request, response);
