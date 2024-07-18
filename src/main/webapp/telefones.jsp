@@ -86,7 +86,7 @@
 				return false;
 			}else if(document.getElementById("tipo").value == '') {
 				alert("Informe O tipo");
-				return false
+				return false 
 		}
 	</script>
 </body>

@@ -50,7 +50,11 @@ public class TelefoneServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		BeansCursoJsp beansCursoJsp = (BeansCursoJsp) request.getSession().getAttribute("userEscolhido");
+
+		String numero = request.getParameter("numero");
+
+		String tipo = request.getParameter("tipo");
 	}
 
 }
