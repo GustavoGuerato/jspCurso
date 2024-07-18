@@ -44,15 +44,24 @@
 			id="form-user">
 			<div class="form-group-row">
 				<div class="u-form-group">
-					<label for="id">User:</label> <input type="text"
-						readonly="readonly" id="id" name="id" class="input-field"
-						value="${userid}">
+					<label for="id">User:</label> <input type="text" id="id" name="id"
+						class="input-field" value="${userEscolhido}"> <label
+						for="id">User:</label> <input type="text" id="id" name="id"
+						class="input-field" value="${userEscolhidoNome}"> <label
+						for="numero">Numero:</label> <input type="text" id='numero'
+						name="numero"> <select id="tipo" name="tipo">
+						<option>Casa</option>
+						<option>Fixo</option>
+						<option>Celular</option>
+					</select>
 
-					<div class="u-form-group">
-						<button type="submit">Salvar</button>
-						<button type="button"
-							onclick="document.getElementById('form-user').action='salvarUsuario?acao=reset'; document.getElementById('form-user').submit();">Cancelar</button>
-					</div>
+				</div>
+			</div>
+			<div class="u-form-group">
+				<button type="submit">Salvar</button>
+				<button type="button"
+					onclick="document.getElementById('form-user').action='salvarUsuario?acao=reset'; document.getElementById('form-user').submit();">Cancelar</button>
+			</div>
 		</form>
 
 		<div class="email-login">

@@ -37,8 +37,7 @@ public class TelefoneServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
 			// request.setAttribute("usuarios", daoUsuario.listar());
 			request.setAttribute("msg", "salvo com sucesso");
-			request.getSession().setAttribute("user", usuario.getId());
-			request.getSession().setAttribute("nomeUser", usuario.getId());
+
 			view.forward(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
