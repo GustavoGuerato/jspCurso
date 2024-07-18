@@ -79,6 +79,15 @@
 			</table>
 		</div>
 	</div>
-
+	<script type="text/javascript">
+		function validarCampos() {
+			if (document.getElementById("numero").value == '') {
+				alert("Informe O numero");
+				return false;
+			}else if(document.getElementById("tipo").value == '') {
+				alert("Informe O tipo");
+				return false
+		}
+	</script>
 </body>
 </html>
