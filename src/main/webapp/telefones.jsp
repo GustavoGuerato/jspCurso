@@ -45,15 +45,17 @@
 			<div class="form-group-row">
 				<div class="u-form-group">
 					<label for="id">User:</label> <input type="text" id="id" name="id"
-						class="input-field" value="${userEscolhido}"> <label
+						class="input-field" value="${userEscolhido}" readonly> <label
 						for="id">User:</label> <input type="text" id="id" name="id"
-						class="input-field" value="${userEscolhidoNome}"> <label
-						for="numero">Numero:</label> <input type="text" id='numero'
-						name="numero"> <select id="tipo" name="tipo">
+						class="input-field" value="${userEscolhidoNome}" readonly>
+
+					<label for="numero">Numero:</label> <input type="text" id='numero'
+						name="numero" readonly> <select id="tipo" name="tipo">
 						<option>Casa</option>
 						<option>Fixo</option>
 						<option>Celular</option>
 					</select>
+
 
 				</div>
 			</div>
@@ -71,7 +73,7 @@
 						<td style="width: 150px"><c:out value="${fone.id}"></c:out> <c:out
 								value="${fone.numero}"></c:out></td>
 						<td><c:out value="${fone.tipo}"></c:out></td>
-						<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img
+						<td><a href="salvarTelefones?acao=delete&phone=${user.id}"><img
 								src="resources/img/excluir.png" width="20px" height="20px"></a></td>
 
 					</tr>
