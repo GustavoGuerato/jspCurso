@@ -3,6 +3,8 @@ package dao;
 import connection.SingleConnection;
 import java.sql.*;
 
+import beans.BeansCursoJsp;
+
 public class DaoTelefone {
 
     public void adicionarTelefone(String nome, String numero) {
@@ -38,7 +40,7 @@ public class DaoTelefone {
         }
     }
 
-    public void visualizarTelefones() {
+    public  DaoTelefone(BeansCursoJsp beansCursoJsp) {
         String sql = "SELECT * FROM telefones";
         try (Connection connection = SingleConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -148,4 +150,6 @@ public class DaoTelefone {
             System.err.println("Erro ao gerar relatório de telefones: " + e.getMessage());
         }
     }
+
+	
 }
