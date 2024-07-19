@@ -1,18 +1,17 @@
 package servlet;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
+import beans.BeansCursoJsp;
+import beans.Telefones;
+import dao.DaoUsuario;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.SQLException;
-
-import beans.BeansCursoJsp;
-import beans.Telefones;
-import dao.DaoTelefone;
-import dao.DaoUsuario;
 
 @WebServlet("/salvarTelefones")
 public class TelefoneServlet extends HttpServlet {
@@ -37,15 +36,14 @@ public class TelefoneServlet extends HttpServlet {
             request.setAttribute("userEscolhido", usuario);
 
             RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
-            request.setAttribute("msg", "usuário carregado com sucesso");
+            request.setAttribute("usuarios", daoTelefone(usuario));
+            request.setAttribute("msg", "Telefone salvo com sucesso");
             view.forward(request, response);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("msg", "Erro ao carregar usuário: " + e.getMessage());
-            RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
-            view.forward(request, response);
+            request.setAttribute("msg", "Erro ao salvar telefone: " + e.getMessage());
+         
         }
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -73,8 +71,7 @@ public class TelefoneServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("msg", "Erro ao salvar telefone: " + e.getMessage());
-            RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
-            view.forward(request, response);
+         
         }
 
     }
