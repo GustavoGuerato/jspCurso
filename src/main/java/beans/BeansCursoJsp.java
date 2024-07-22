@@ -1,105 +1,115 @@
 package beans;
 
 public class BeansCursoJsp {
+    // Outros campos existentes
+    private Long id;
+    private String login;
+    private String senha;
+    private String nome;
+    private String tel;
+    private String cep;
+    private String rua;
+    private String bairro;
+    private String cidade;
+    private String estado;
+    private String ibge;
+    private String imagem; // Campo para a imagem
 
-	private Long id;
-	private String login;
-	private String senha;
-	private String nome;
-	private String tel;
-	private String cep;
-	private String rua;
-	private String bairro;
-	private String cidade;
-	private String estado;
-	private String ibge;
+    // Getters e setters para os campos existentes
+    public Long getId() {
+        return id;
+    }
 
-	public String getBairro() {
-		return bairro;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
+    public String getLogin() {
+        return login;
+    }
 
-	public String getRua() {
-		return rua;
-	}
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
-	public void setRua(String rua) {
-		this.rua = rua;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public String getCidade() {
-		return cidade;
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getEstado() {
-		return estado;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
+    public String getTel() {
+        return tel;
+    }
 
-	public String getIbge() {
-		return ibge;
-	}
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 
-	public void setIbge(String ibge) {
-		this.ibge = ibge;
-	}
+    public String getCep() {
+        return cep;
+    }
 
-	public String getCep() {
-		return cep;
-	}
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
 
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
+    public String getRua() {
+        return rua;
+    }
 
-	public String getTel() {
-		return tel;
-	}
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
 
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
+    public String getBairro() {
+        return bairro;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getCidade() {
+        return cidade;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public String getEstado() {
+        return estado;
+    }
 
-	public String getLogin() {
-		return login;
-	}
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
+    public String getIbge() {
+        return ibge;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public void setIbge(String ibge) {
+        this.ibge = ibge;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    // Getter e setter para o campo imagem
+    public String getImagem() {
+        return imagem;
+    }
 
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
 }
