@@ -41,7 +41,8 @@
 		</div>
 		<h3 style="color: red">${msg}</h3>
 		<form action="salvarUsuario" method="post" class="email-login"
-			id="form-user" onsubmit="return validarCampos() ? true : false;" enctype="multipart/form-data">
+			id="form-user" onsubmit="return validarCampos() ? true : false;"
+			enctype="multipart/form-data">
 			<div class="form-group-row">
 				<div class="u-form-group">
 					<label for="id">Código:</label> <input type="text" id="id"
@@ -92,7 +93,8 @@
 			</div>
 
 			<div class="u-form-group">
-				<label for="foto">Foto: </label> <input type="file">
+				<label for="foto">Foto: </label> <input type="file" name="foto"
+					value="Foto">
 			</div>
 
 			<div class="u-form-group">
