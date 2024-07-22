@@ -2,10 +2,13 @@ package servlet;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -13,6 +16,9 @@ import beans.BeansCursoJsp;
 import dao.DaoUsuario;
 
 @WebServlet("/salvarUsuario")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+                 maxFileSize = 1024 * 1024 * 10,      // 10MB
+                 maxRequestSize = 1024 * 1024 * 50)   // 50MB
 public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -82,6 +88,7 @@ public class UsuarioServlet extends HttpServlet {
 			String cidade = request.getParameter("cidade");
 			String estado = request.getParameter("estado");
 			String ibge = request.getParameter("ibge");
+			Part filePart = request.getPart("file"); // Obtém o arquivo enviado
 
 			BeansCursoJsp usuario = new BeansCursoJsp();
 			usuario.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : null);
@@ -101,6 +108,21 @@ public class UsuarioServlet extends HttpServlet {
 				if (msg != null) {
 					request.setAttribute("msg", msg);
 				} else {
+					if (filePart != null && filePart.getSize() > 0) {
+						// Define o diretório de upload
+						String uploadPath = request.getServletContext().getRealPath("") + File.separator + "uploads";
+						File uploadDir = new File(uploadPath);
+						if (!uploadDir.exists()) {
+							uploadDir.mkdir();
+						}
+
+						// Salva o arquivo
+						String fileName = extractFileName(filePart);
+						String filePath = uploadPath + File.separator + fileName;
+						filePart.write(filePath);
+						usuario.setImagem(fileName); // Supondo que você tenha um campo para imagem no BeansCursoJsp
+					}
+
 					if (id == null || id.isEmpty()) {
 						if (!daoUsuario.validarLogin(login)) {
 							request.setAttribute("msg", "Usuário já existe com este login");
@@ -124,7 +146,6 @@ public class UsuarioServlet extends HttpServlet {
 			throws ServletException, IOException, SQLException {
 		RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 		request.setAttribute("usuarios", daoUsuario.listar());
-		request.setAttribute("msg", "salvo com sucesso");
 		view.forward(request, response);
 	}
 
@@ -142,5 +163,16 @@ public class UsuarioServlet extends HttpServlet {
 			return "Telefone deve ser informado";
 		}
 		return null;
+	}
+
+	private String extractFileName(Part part) {
+		String contentDisp = part.getHeader("content-disposition");
+		String[] items = contentDisp.split(";");
+		for (String s : items) {
+			if (s.trim().startsWith("filename")) {
+				return s.substring(s.indexOf("=") + 2, s.length() - 1);
+			}
+		}
+		return "";
 	}
 }
