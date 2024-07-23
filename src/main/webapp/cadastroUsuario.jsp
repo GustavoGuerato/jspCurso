@@ -1,131 +1,136 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Cadastro De Usuario</title>
-<link rel="stylesheet" type="text/css" href="resources/css/cadastro.css" />
+    <meta charset="UTF-8">
+    <title>Cadastro De Usuario</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/cadastro.css" />
 
-<!-- Adicionando JQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-	crossorigin="anonymous"></script>
+    <!-- Adicionando JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
 
-<style>
-.form-group-row {
-	display: flex;
-	justify-content: space-between;
-}
+    <style>
+        .form-group-row {
+            display: flex;
+            justify-content: space-between;
+        }
 
-.form-group-row .u-form-group {
-	flex: 1;
-	margin-right: 10px;
-}
+        .form-group-row .u-form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
 
-.form-group-row .u-form-group:last-child {
-	margin-right: 0;
-}
+        .form-group-row .u-form-group:last-child {
+            margin-right: 0;
+        }
 
-.input-field {
-	width: 100%;
-}
-</style>
-
+        .input-field {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-	<a href="acessoliberado.jsp">Inicio</a>
-	<a href="index.jsp">Sair</a>s
+    <a href="acessoliberado.jsp">Inicio</a>
+    <a href="index.jsp">Sair</a>
 
-	<div class="login-box">
-		<div class="lb-header">
-			<h2>Cadastro De Usuario</h2>
-		</div>
-		<h3 style="color: red">${msg}</h3>
-		<form action="salvarUsuario" method="post" class="email-login"
-			id="form-user" onsubmit="return validarCampos() ? true : false;"
-			enctype="multipart/form-data">
-			<div class="form-group-row">
-				<div class="u-form-group">
-					<label for="id">Código:</label> <input type="text" id="id"
-						name="id" class="input-field" value="${user.id}">
-				</div>
-				<div class="u-form-group">
-					<label for="cep">CEP:</label> <input type="text" id="cep"
-						name="cep" class="input-field" value="${user.cep}"
-						onblur="consultaCep();">
-				</div>
-			</div>
-			<div class="u-form-group">
-				<label for="login">Login:</label> <input type="text" id="login"
-					name="login" class="input-field" value="${user.login}">
-			</div>
-			<div class="u-form-group">
-				<label for="senha">Senha:</label> <input type="password" id="senha"
-					name="senha" class="input-field" value="${user.senha}">
-			</div>
-			<div class="u-form-group">
-				<label for="nome">Nome:</label> <input type="text" id="nome"
-					name="nome" class="input-field" value="${user.nome}">
-			</div>
-			<div class="u-form-group">
-				<label for="telefone">Telefone:</label> <input type="text"
-					id="telefone" name="telefone" class="input-field"
-					value="${user.telefone}">
-			</div>
-			<div class="u-form-group">
-				<label for="rua">Rua:</label> <input type="text" id="rua" name="rua"
-					class="input-field" value="${user.rua}">
-			</div>
-			<div class="u-form-group">
-				<label for="bairro">Bairro:</label> <input type="text" id="bairro"
-					name="bairro" class="input-field" value="${user.bairro}">
-			</div>
-			<div class="u-form-group">
-				<label for="cidade">Cidade:</label> <input type="text" id="cidade"
-					name="cidade" class="input-field" value="${user.cidade}">
-			</div>
-			<div class="u-form-group">
-				<label for="estado">Estado:</label> <input type="text" id="estado"
-					name="estado" class="input-field" value="${user.estado}">
-			</div>
-			<div class="u-form-group">
-				<label for="ibge">IBGE:</label> <input type="text" id="ibge"
-					name="ibge" class="input-field" value="${user.ibge}">
-			</div>
-
-			<div class="u-form-group">
-				<label for="foto">Foto: </label> <input type="file" name="foto"
-					value="Foto">
-			</div>
-
-			<div class="u-form-group">
-				<button type="submit">Salvar</button>
-				<button type="button"
-					onclick="document.getElementById('form-user').action='salvarUsuario?acao=reset'; document.getElementById('form-user').submit();">Cancelar</button>
-			</div>
-		</form>
-
-		<div class="email-login">
-			<table>
-				<c:forEach items="${usuarios}" var="user">
-					<tr>
-						<td style="width: 150px"><c:out value="${user.id}"></c:out> <c:out
-								value="${user.login}"></c:out></td>
-						<td><c:out value="${user.senha}"></c:out></td>
-						<td><c:out value="${user.nome}"></c:out></td>
-						<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img
-								src="resources/img/excluir.png" width="20px" height="20px"></a></td>
-						<td><a href="salvarUsuario?acao=edit&user=${user.id}"><img
-								src="resources/img/editar.png" width="20px" height="20px"></a></td>
-						<td><a href="SalvarTelefone?user=${user.id}"><img
-								alt="Telefones" title="telefones" src="resources/img/telefone."
-								width="20px" height="20px"></a></td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</div>
-	<script type="text/javascript">
-		
-	</script>
+    <div class="login-box">
+        <div class="lb-header">
+            <h2>Cadastro De Usuario</h2>
+        </div>
+        <h3 style="color: red">${msg}</h3>
+        <form action="salvarUsuario" method="post" class="email-login" id="form-user" onsubmit="return validarCampos() ? true : false;" enctype="multipart/form-data">
+            <div class="form-group-row">
+                <div class="u-form-group">
+                    <label for="id">Código:</label>
+                    <input type="text" id="id" name="id" class="input-field" value="${user.id}">
+                </div>
+                <div class="u-form-group">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" class="input-field" value="${user.cep}" onblur="consultaCep();">
+                </div>
+            </div>
+            <div class="u-form-group">
+                <label for="login">Login:</label>
+                <input type="text" id="login" name="login" class="input-field" value="${user.login}">
+            </div>
+            <div class="u-form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" class="input-field" value="${user.senha}">
+            </div>
+            <div class="u-form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" class="input-field" value="${user.nome}">
+            </div>
+            <div class="u-form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" class="input-field" value="${user.telefone}">
+            </div>
+            <div class="u-form-group">
+                <label for="rua">Rua:</label>
+                <input type="text" id="rua" name="rua" class="input-field" value="${user.rua}">
+            </div>
+            <div class="u-form-group">
+                <label for="bairro">Bairro:</label>
+                <input type="text" id="bairro" name="bairro" class="input-field" value="${user.bairro}">
+            </div>
+            <div class="u-form-group">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" class="input-field" value="${user.cidade}">
+            </div>
+            <div class="u-form-group">
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" class="input-field" value="${user.estado}">
+            </div>
+            <div class="u-form-group">
+                <label for="ibge">IBGE:</label>
+                <input type="text" id="ibge" name="ibge" class="input-field" value="${user.ibge}">
+            </div>
+            <div class="u-form-group">
+                <label for="foto">Foto:</label>
+                <input type="file" id="foto" name="foto">
+            </div>
+            <div class="u-form-group">
+                <label for="pdf">PDF:</label>
+                <input type="file" id="pdf" name="pdf">
+            </div>
+            <div class="u-form-group">
+                <button type="submit">Salvar</button>
+                <button type="button" onclick="document.getElementById('form-user').action='salvarUsuario?acao=reset'; document.getElementById('form-user').submit();">Cancelar</button>
+            </div>
+        </form>
+        <div class="email-login">
+            <table>
+                <c:forEach items="${usuarios}" var="user">
+                    <tr>
+                        <td style="width: 150px">
+                            <c:out value="${user.id}"></c:out>
+                            <c:out value="${user.login}"></c:out>
+                        </td>
+                        <td><c:out value="${user.senha}"></c:out></td>
+                        <td><c:out value="${user.nome}"></c:out></td>
+                        <td>
+                            <a href="salvarUsuario?acao=delete&user=${user.id}">
+                                <img src="resources/img/excluir.png" width="20px" height="20px">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="salvarUsuario?acao=edit&user=${user.id}">
+                                <img src="resources/img/editar.png" width="20px" height="20px">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="SalvarTelefone?user=${user.id}">
+                                <img alt="Telefones" title="telefones" src="resources/img/telefone." width="20px" height="20px">
+                            </a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // Scripts adicionais podem ser adicionados aqui
+    </script>
 </body>
 </html>
