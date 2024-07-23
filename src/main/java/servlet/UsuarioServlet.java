@@ -88,7 +88,8 @@ public class UsuarioServlet extends HttpServlet {
 			String cidade = request.getParameter("cidade");
 			String estado = request.getParameter("estado");
 			String ibge = request.getParameter("ibge");
-			Part filePart = request.getPart("file"); // Obtém o arquivo enviado
+			Part filePartImagem = request.getPart("foto"); // Obtém o arquivo de imagem enviado
+			Part filePartPdf = request.getPart("pdf"); // Obtém o arquivo de PDF enviado
 
 			BeansCursoJsp usuario = new BeansCursoJsp();
 			usuario.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : null);
@@ -108,19 +109,27 @@ public class UsuarioServlet extends HttpServlet {
 				if (msg != null) {
 					request.setAttribute("msg", msg);
 				} else {
-					if (filePart != null && filePart.getSize() > 0) {
-						// Define o diretório de upload
-						String uploadPath = request.getServletContext().getRealPath("") + File.separator + "uploads";
-						File uploadDir = new File(uploadPath);
-						if (!uploadDir.exists()) {
-							uploadDir.mkdir();
-						}
+					// Diretório de upload
+					String uploadPath = request.getServletContext().getRealPath("") + File.separator + "uploads";
+					File uploadDir = new File(uploadPath);
+					if (!uploadDir.exists()) {
+						uploadDir.mkdir();
+					}
 
-						// Salva o arquivo
-						String fileName = extractFileName(filePart);
-						String filePath = uploadPath + File.separator + fileName;
-						filePart.write(filePath);
-						usuario.setImagem(fileName); // Supondo que você tenha um campo para imagem no BeansCursoJsp
+					if (filePartImagem != null && filePartImagem.getSize() > 0) {
+						// Salva o arquivo de imagem
+						String fileNameImagem = extractFileName(filePartImagem);
+						String filePathImagem = uploadPath + File.separator + fileNameImagem;
+						filePartImagem.write(filePathImagem);
+						usuario.setImagem(fileNameImagem); // Supondo que você tenha um campo para imagem no BeansCursoJsp
+					}
+
+					if (filePartPdf != null && filePartPdf.getSize() > 0) {
+						// Salva o arquivo de PDF
+						String fileNamePdf = extractFileName(filePartPdf);
+						String filePathPdf = uploadPath + File.separator + fileNamePdf;
+						filePartPdf.write(filePathPdf);
+						usuario.setPdf(fileNamePdf); // Supondo que você tenha um campo para PDF no BeansCursoJsp
 					}
 
 					if (id == null || id.isEmpty()) {
