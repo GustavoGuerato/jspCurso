@@ -1,115 +1,124 @@
 package beans;
 
 public class BeansCursoJsp {
-    // Outros campos existentes
-    private Long id;
-    private String login;
-    private String senha;
-    private String nome;
-    private String tel;
-    private String cep;
-    private String rua;
-    private String bairro;
-    private String cidade;
-    private String estado;
-    private String ibge;
-    private String imagem; // Campo para a imagem
+	// Outros campos existentes
+	private Long id;
+	private String login;
+	private String senha;
+	private String nome;
+	private String tel;
+	private String cep;
+	private String rua;
+	private String bairro;
+	private String cidade;
+	private String estado;
+	private String ibge;
+	private String imagem;
+	private String Pdf;// Campo para a imagem
 
-    // Getters e setters para os campos existentes
-    public Long getId() {
-        return id;
-    }
+	public String getPdf() {
+		return Pdf;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setPdf(String pdf) {
+		Pdf = pdf;
+	}
 
-    public String getLogin() {
-        return login;
-    }
+	// Getters e setters para os campos existentes
+	public Long getId() {
+		return id;
+	}
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getSenha() {
-        return senha;
-    }
+	public String getLogin() {
+		return login;
+	}
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getSenha() {
+		return senha;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
-    public String getTel() {
-        return tel;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getCep() {
-        return cep;
-    }
+	public String getTel() {
+		return tel;
+	}
 
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 
-    public String getRua() {
-        return rua;
-    }
+	public String getCep() {
+		return cep;
+	}
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 
-    public String getBairro() {
-        return bairro;
-    }
+	public String getRua() {
+		return rua;
+	}
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
 
-    public String getCidade() {
-        return cidade;
-    }
+	public String getBairro() {
+		return bairro;
+	}
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public String getCidade() {
+		return cidade;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 
-    public String getIbge() {
-        return ibge;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public void setIbge(String ibge) {
-        this.ibge = ibge;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    // Getter e setter para o campo imagem
-    public String getImagem() {
-        return imagem;
-    }
+	public String getIbge() {
+		return ibge;
+	}
 
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
-    }
+	public void setIbge(String ibge) {
+		this.ibge = ibge;
+	}
+
+	// Getter e setter para o campo imagem
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 }
